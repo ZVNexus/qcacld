@@ -16925,6 +16925,7 @@ QDF_STATUS sme_register_bcn_recv_pause_ind_cb(mac_handle_t mac_handle,
 }
 #endif
 
+/*Vendor cmd to set SW retry threshold value-26106,20210701*/
 QDF_STATUS sme_set_vdev_sw_retry(uint8_t vdev_id, uint8_t sw_retry_count,
 				 wmi_vdev_custom_sw_retry_type_t sw_retry_type)
 {

@@ -105,6 +105,17 @@ HDD_OBJS := 	$(HDD_SRC_DIR)/wlan_hdd_assoc.o \
 		$(HDD_SRC_DIR)/wlan_hdd_wmm.o \
 		$(HDD_SRC_DIR)/wlan_hdd_wowl.o
 
+ifeq ($(CONFIG_OPLUS_FEATURE_WIFI_OPLUSWFD), y)
+KBUILD_CPPFLAGS += -DOPLUS_FEATURE_WIFI_OPLUSWFD
+HDD_OBJS +=	$(HDD_SRC_DIR)/wlan_oplus_wfd.o
+endif
+
+ifeq ($(CONFIG_OPLUS_FEATURE_WIFI_OPLUSWFD), m)
+KBUILD_CPPFLAGS += -DOPLUS_FEATURE_WIFI_OPLUSWFD
+HDD_OBJS +=	$(HDD_SRC_DIR)/wlan_oplus_wfd.o
+endif
+### End
+
 ifeq ($(CONFIG_WLAN_FEATURE_PERIODIC_STA_STATS), y)
 HDD_OBJS += $(HDD_SRC_DIR)/wlan_hdd_periodic_sta_stats.o
 endif

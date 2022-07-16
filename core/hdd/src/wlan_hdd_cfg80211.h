@@ -195,7 +195,12 @@ extern const struct nla_policy wlan_hdd_wisa_cmd_policy[
 
 #define HDD_SET_BIT(__param, __val)    ((__param) |= (1 << (__val)))
 
+#ifndef OPLUS_BUG_STABILITY
+//Modify for scan more hidden AP
 #define MAX_SCAN_SSID 10
+#else /* OPLUS_BUG_STABILITY */
+#define MAX_SCAN_SSID 16
+#endif /* OPLUS_BUG_STABILITY */
 
 #define IS_CHANNEL_VALID(channel) ((channel >= 0 && channel < 15) \
 			|| (channel >= 36 && channel <= 184))
@@ -270,13 +275,13 @@ typedef enum {
 #define WIFI_TDLS_EXTERNAL_CONTROL_SUPPORT	BIT(1)
 #define WIIF_TDLS_OFFCHANNEL_SUPPORT		BIT(2)
 
-#define CFG_NON_AGG_RETRY_MAX                  (64)
-#define CFG_AGG_RETRY_MAX                      (64)
+#define CFG_NON_AGG_RETRY_MAX                  (64) /*Vendor cmd to set SW retry threshold value-26106,20210701*/
+#define CFG_AGG_RETRY_MAX                      (64) /*Vendor cmd to set SW retry threshold value-26106,20210701*/
 #define CFG_CTRL_RETRY_MAX                     (31)
 #define CFG_PROPAGATION_DELAY_MAX              (63)
 #define CFG_PROPAGATION_DELAY_BASE             (64)
 #define CFG_AGG_RETRY_MIN                      (5)
-#define CFG_NON_AGG_RETRY_MIN                  (5)
+#define CFG_NON_AGG_RETRY_MIN                  (5) /*Vendor cmd to set SW retry threshold value-26106,20210701*/
 
 #define PCL_CHANNEL_SUPPORT_GO			BIT(0)
 #define PCL_CHANNEL_SUPPORT_CLI			BIT(1)
